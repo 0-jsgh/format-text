@@ -1,0 +1,135 @@
+*{
+    padding: 0;margin: 0; font-family: Sans-Serif; text-decoration: none; box-sizing: border-box;
+}
+
+body{
+    background: #f3edd7;
+    text-align: justify; font-size: 0.6cm;
+    margin: 1cm;
+}
+
+h1{ 
+    text-align: center;
+    margin: 0.8cm 0;
+    font-size: 0.8cm;
+}
+
+h2{
+    font-size: 0.7cm;
+    margin: 14px 0;
+}
+
+h3{
+    font-size: 0.6cm;
+   margin: 10px 0.5cm; 
+}
+
+.cambio, .cerrar{
+    color: #000;
+    border-top: 1px solid black;
+    padding: 10px 0.4cm;
+    display: block;
+    background:rgba(255,255,255,0.4);
+    border:1px solid black;
+    text-align: center;
+    position: fixed;
+    top:0;
+    
+}
+
+.cambio:hover, .cerrar:hover{
+    background: black; color:white;
+}
+
+.cambio{
+    left: 0;
+}
+.cerrar{
+    right: 0;
+}
+
+img {
+  display: block;
+  margin: 0.5cm auto;
+  border: 2px solid black;
+  border-radius: 0.5cm;
+}
+
+.img{
+  width: 720px;
+}
+
+.imin{
+  max-width:360px;
+}
+
+.imax{
+  width: 1280px;
+}
+
+.youtube {
+  display: block;
+  width: 720px;
+  height: 405px;
+  margin: 0.5cm auto;
+  border: 2px solid black;
+  border-radius: 0.5cm;
+}
+
+.ext {
+  margin: 0.5cm auto;
+  width: 100%;
+  height: 90vh;
+  border: 2px solid black;
+  border-radius: 0.5cm;
+}
+
+a {
+  display:block;
+  color: #ff5600;
+}
+
+a:hover {
+  color: #ff7700;
+}
+
+hr {
+  background: black;
+  border: 0.1cm solid black;
+}
+    
+@media screen and (max-width: 1400px) {
+  .imax{
+    width:100%;
+  }
+}
+    
+@media screen and (max-width: 15cm) {
+  body {
+    margin: 1cm 0.5cm;
+    font-size: 0.5cm;
+  }
+
+  img, .img {
+    width: 100%;
+  }
+
+  .youtube {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    margin: 1cm 0.5cm;
+    font-size: 0.5cm;
+  }
+
+  img, .img {
+    width: 100%;
+  }
+
+  .youtube {
+    width: 100%;
+  }
+}
