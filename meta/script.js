@@ -87,8 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (linea.startsWith('ext:')){
         return '<iframe class="ext" allowfullscreen src="' + linea.substring(4) + '"></iframe>';  
       }
-      else if (linea.startsWith('link:')){
-        return '<a href="' + linea.substring(5) + '">' + linea.substring(5) + '</a>';  
+      else if (linea.startsWith('link::')){
+	 var partes = linea.split('::');
+         var ruta = partes[1];
+         var texto = partes.slice(2).join('::');
+         return'<a href="' + ruta + '">' + texto + '</a>';
       }
       else if (linea.startsWith('linea:')){
         return '<hr />';  
