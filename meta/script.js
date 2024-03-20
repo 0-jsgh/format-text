@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Crear el elemento link para el stylesheet
   var stylesheetLink = document.createElement('link');
   stylesheetLink.rel = 'stylesheet';
-  stylesheetLink.href = 'estilo.css';
+  stylesheetLink.href = 'meta/estilo-0.1.css';
   stylesheetLink.id = 'estilosCSS';
   head.appendChild(stylesheetLink);
 });
