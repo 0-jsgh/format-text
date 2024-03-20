@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Crear el elemento meta
   var metaCharset = document.createElement('meta');
-  metaCharset.setAttribute('charset', 'utf-8');
+  metaCharset.setAttribute('charset', 'UTF-8');
   var headElement = document.head || document.getElementsByTagName('head')[0];
   headElement.appendChild(metaCharset);
 
   // Crear el elemento link para el stylesheet
   var stylesheetLink = document.createElement('link');
   stylesheetLink.rel = 'stylesheet';
-  stylesheetLink.href = 'https://cdn.jsdelivr.net/gh/0-jsgh/format-text@main/meta/estilo.css';
+  stylesheetLink.href = 'estilo.css';
   stylesheetLink.id = 'estilosCSS';
   head.appendChild(stylesheetLink);
 });
@@ -33,13 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var lineasFormateadas = [];
     var lineaActual = '';
-    const prefijos = ['#','img:','imgmax:','imgmin:','video:','ext:','linea:','link:', "***"];
+    const prefijos = ['#','img:','imgmax:','imgmin:','video:','ext:','linea:','link:', "***", "li:", "des:", "bt:"];
     const sufijos = ['"','”','.',':','?','…','!','~',']']
+
     lineas.forEach(function(linea) {
       if(linea.startsWith('"')||linea.startsWith('“')){
         linea = ' — ' + linea.trim();
       }
-      // Verificar si la línea comienza con '//'
+      // Verificar si la línea comienza con un prefijo asignado
       if (prefijos.some(prefijo => linea.trim().startsWith(prefijo))) {
         // Agregar la línea actual como elemento HTML sin cambios y con salto de línea
         lineasFormateadas.push(linea.trim());
@@ -75,6 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (linea.startsWith('img:')){
         return '<img class="img" src="' + linea.substring(4) + '">';  
       }
+      else if (linea.startsWith('li:')){
+        return '<li>' + linea.substring(3) + '</li>';  
+      }
+      else if (linea.startsWith('des:')){
+        return '<p class="dest">' + linea.substring(4) + '</p>';  
+      }
       else if (linea.startsWith('imgmin:')){
         return '<img class="imin" src="' + linea.substring(7) + '">';  
       }
@@ -88,16 +95,27 @@ document.addEventListener('DOMContentLoaded', function() {
         return '<iframe class="ext" allowfullscreen src="' + linea.substring(4) + '"></iframe>';  
       }
       else if (linea.startsWith('link::')){
-	 var partes = linea.split('::');
+	       var partes = linea.split('::');
          var ruta = partes[1];
          var texto = partes.slice(2).join('::');
          return'<a href="' + ruta + '">' + texto + '</a>';
       }
+      else if (linea.startsWith('bt::')){
+         var partes = linea.split('::');
+         var ruta = partes[1];
+         var texto = partes.slice(2).join('::');
+         return'<li class="bott"><a href="' + ruta + '">' + texto + '</a></li>';
+      }
       else if (linea.startsWith('linea:')){
         return '<hr />';  
       }
-      else if (linea.startsWith('***')){
-        return '<p><center>'+ linea +'</center><p>'
+      else if (linea.startsWith('***') || linea.endsWith('***')){
+        if (linea == '***'){
+          return '<p><center>'+ linea +'</center><p>'
+        }
+        else {
+          return '<p><i><center>'+ linea.substring(3, linea.length - 3) +'</center></i><p>'
+        }
       }
       else {
         // Agregar etiquetas <p> al resto de las líneas
@@ -135,7 +153,7 @@ function cambiarEstilo() {
       // Si no existe, crear una nueva etiqueta <style> y agregar estilos
       var style = document.createElement('style');
       style.id = 'customStyle';
-          style.innerHTML = 'body{ background: #2b2922;} * {color:white;} .cambio{background:white;} .cerrar{background:white;} img{border: 2px solid white;} .ext{border: 2px solid white;} .youtube{border: 2px solid white;} hr{border: 0.1cm solid white; background: white;}';
+          style.innerHTML = 'body{ background: #2b2922;} * {color:white;} .cambio{background:white;} .cerrar{background:white;} img{border: 2px solid white;} .ext{border: 2px solid white;} .youtube{border: 2px solid white;} hr{border: 0.1cm solid white; background: white;} .dest{border-bottom: 2px solid white;} .bott > a{ color:white; border-bottom: 2px solid white;} .bott > a:hover{ background: rgba(255,255,255,0.8);color:black;}';
 
       // Agregar la etiqueta <style> al <head>
       document.head.appendChild(style);
