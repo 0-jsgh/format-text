@@ -7,4 +7,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Agregar la etiqueta <style> al <head>
   document.head.appendChild(style);
-});
+};
