@@ -24,10 +24,24 @@ h3{
    margin: 10px 0.5cm; 
 }
 
+li {
+  margin-bottom: 0.2cm;
+}
+
+a {
+  display:block;
+  color: #ff6700;
+  margin: 0.2cm 0.5cm;
+}
+
+a:hover {
+  color: #ff9c00;
+}
+
 .cambio, .cerrar{
     color: #000;
     border-top: 1px solid black;
-    padding: 10px 0.4cm;
+    padding: 10px 0.4cm; margin: 0;
     display: block;
     background:rgba(255,255,255,0.4);
     border:1px solid black;
@@ -42,7 +56,7 @@ h3{
 }
 
 .cambio{
-    left: 0;
+    left:0;
 }
 .cerrar{
     right: 0;
@@ -84,18 +98,43 @@ img {
   border-radius: 0.5cm;
 }
 
-a {
-  display:block;
-  color: #ff5600;
-}
-
-a:hover {
-  color: #ff7700;
-}
-
 hr {
   background: black;
   border: 0.1cm solid black;
+}
+
+p {
+  margin-bottom: 0.2cm;
+}
+
+.dest{
+  background: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 0.3cm 0;
+  font-style: italic;
+  border-bottom: 2px solid black;
+  border-radius: 0.25cm;
+}
+
+.bott{
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+}
+
+.bott > a{
+  margin:0;
+  color:black;
+  width: 100%;
+  padding: 0.4cm 0.5cm;
+  border-bottom: 2px solid black;
+  display: inline-block;
+}
+
+.bott > a:hover{
+  background: rgba(0,0,0,0.8);
+  color:white;
 }
     
 @media screen and (max-width: 15cm) {
