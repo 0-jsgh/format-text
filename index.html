@@ -29,7 +29,7 @@ Cada uno de estos se asignan con los prefijos "#", "##" y "###" respectivamente.
   
 linea:
 ##Enlaces
-los enlaces se asignan con el prefijo img:: al inicio de una linea, seguido del enlace y el texto visible (link :: enlace.com :: texto).
+los enlaces se asignan con el prefijo "link" al inicio de una linea, seguido del enlace y el texto visible (link :: enlace.com :: texto).
 link:: meta/estilo.js :: script de archivo
 link::meta/style.css :: hoja de estilos 
 linea:
@@ -37,7 +37,17 @@ linea:
 se pueden insertar videos de Youtube con el prefijo video: al inicio de una linea, hay que poner el enlace de la siguiente manera:
   "https://youyube.com/embed/identificador-del-video"
 video:https://www.youtube.com/embed/rMjmAraA9H0?si=A2oWbCZlT4ndg2PN
-imgmin:https://upload.wikimedia.org/wikipedia/commons/7/79/%C3%81tomo.jpg
+  
+linea:
+##Imagenes
+  se pueden insertar 3 tipos de tamaños
+normal "img:ruta/imagen.jpg", que tendra un tamaño fijo de 720 pixeles.
+  img:https://upload.wikimedia.org/wikipedia/commons/7/79/%C3%81tomo.jpg
+pequeño "imgmin:ruta/imagen.jpg", que tendra un tamaño maximo de 360 pixeles.
+  imgmin:https://upload.wikimedia.org/wikipedia/commons/7/79/%C3%81tomo.jpg
+grande "imgmax:ruta/imagen.jpg", que tendra un tamaño fijo de de 1280 pixeles.
+  imgmax:https://upload.wikimedia.org/wikipedia/commons/7/79/%C3%81tomo.jpg
+si la pantalla se hace pequeña las imagenes se adaptaran al tamaño de pantalla.
   
   
 </dody>
