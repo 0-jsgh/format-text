@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var head = document.head;
-
-  var style = document.createElement('style');
-      style.id = 'customStyle';
-          style.innerHTML = '.cambio{display:none;}';
-
-      // Agregar la etiqueta <style> al <head>
-  document.head.appendChild(style);
+// Obtener todos los elementos con la clase 'cambio'
+  var enlacesCambio = document.querySelectorAll('.cambio');
+  // Eliminar los elementos obtenidos
+  enlacesCambio.forEach(function(enlace) {
+    enlace.parentNode.removeChild(enlace);
+  });
 });
