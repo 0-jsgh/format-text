@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var head = document.head;
-
-  var style = document.createElement('style');
-      style.id = 'customStyle';
-          style.innerHTML = '.cerrar{display:none;} .cambio{display:none;}';
-
-      // Agregar la etiqueta <style> al <head>
-  document.head.appendChild(style);
+  // Obtener todos los elementos con la clase 'cerrar'
+  var enlacesCerrar = document.querySelectorAll('.cerrar');
+  // Eliminar los elementos obtenidos
+  enlacesCerrar.forEach(function(enlace) {
+    enlace.parentNode.removeChild(enlace);
+  });
 });
