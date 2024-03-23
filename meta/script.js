@@ -16,7 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // Crear el elemento link para el stylesheet
   var stylesheetLink = document.createElement('link');
   stylesheetLink.rel = 'stylesheet';
-  stylesheetLink.href = 'https://cdn.jsdelivr.net/gh/0-jsgh/format-text@main/meta/estilo-0.1.1.css';
+  stylesheetLink.href = 'meta/estilo-0.1.css';
+  stylesheetLink.id = 'estilosCSS';
+  head.appendChild(stylesheetLink);
+  
+  // Crear el elemento link para el stylesheet
+  var stylesheetLink = document.createElement('link');
+  stylesheetLink.rel = 'stylesheet';
+  stylesheetLink.href = '../../meta/estilo-0.1.css';
   stylesheetLink.id = 'estilosCSS';
   head.appendChild(stylesheetLink);
 });
@@ -123,24 +130,21 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }).join('');
 
-    div.innerHTML = contenidoFinal; 
+    div.innerHTML = contenidoFinal + crearListaNoNumerada();
     
-    // Añadir el enlace al final del div
-    var enlaceModo = document.createElement('a');
-    enlaceModo.href = 'javascript:void(0)';
-    enlaceModo.textContent = 'T';
-    enlaceModo.className = 'cambio';
-    enlaceModo.onclick = cambiarEstilo;
-    div.appendChild(enlaceModo);
-    
-    var enlace = document.createElement('a');
-    enlace.href = 'javascript:void(0)';
-    enlace.className = 'cerrar';
-    enlace.textContent = 'X';
-    enlace.onclick = cerrarbotones;
-    div.appendChild(enlace);
   });
 });
+
+function crearListaNoNumerada() {
+    return '<ul class="menu">' +
+                '<li><a href="javascript:void(0)">M</a>'+
+                '<ol>'+
+                '<li><a href="javascript:void(0)" onclick="cambiarEstilo();">T</a></li>' +
+                '<li><a href="javascript:void(0)" onclick="BorrarMenu();">X</a></li>' +
+                '</ol>'+
+                '</li>' +
+            '</ul>';
+}
 
 function cambiarEstilo() {
     var styleTag = document.getElementById('customStyle');
@@ -153,12 +157,21 @@ function cambiarEstilo() {
       // Si no existe, crear una nueva etiqueta <style> y agregar estilos
       var style = document.createElement('style');
       style.id = 'customStyle';
-          style.innerHTML = 'body{ background: #2b2922;} * {color:white;} .cambio{background:white;} .cerrar{background:white;} img{border: 2px solid white;} .ext{border: 2px solid white;} .youtube{border: 2px solid white;} hr{border: 0.1cm solid white; background: white;} .dest{border-bottom: 2px solid white;} .bott > a{ color:white; border-bottom: 2px solid white;} .bott > a:hover{ background: rgba(255,255,255,0.8);color:black;}';
+          style.innerHTML = 'body{ background: #2b2922;} * {color:white;} .menu a{background:white;} img{border: 2px solid white;} .ext{border: 2px solid white;} .youtube{border: 2px solid white;} hr{border: 0.1cm solid white; background: white;} .dest{border-bottom: 2px solid white;} .bott > a{ color:white; border-bottom: 2px solid white;} .bott > a:hover{ background: rgba(255,255,255,0.8);color:black;}';
 
       // Agregar la etiqueta <style> al <head>
       document.head.appendChild(style);
     }
   }
+
+function BorrarMenu() {
+    // Obtener todos los elementos con la clase 'cerrar'
+  var enlacesCerrar = document.querySelectorAll('.menu');
+  // Eliminar los elementos obtenidos
+  enlacesCerrar.forEach(function(enlace) {
+    enlace.parentNode.removeChild(enlace);
+  });
+}
 
 function cerrarbotones() {
     
