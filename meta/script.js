@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
   head.appendChild(stylesheetLink);
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
   var hola = document.querySelectorAll('body');
 
@@ -33,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var lineasFormateadas = [];
     var lineaActual = '';
-    const prefijos = ['#','img:','imgmax:','imgmin:','video:','ext:','linea:','link:', "***", "li:", "des:", "bt:"];
-    const sufijos = ['"','”','.',':','?','…','!','~',']']
+    const prefijos = ['#','img:','imgmax:','imgmin:','video:','ext:','linea:','link:', "***", "li:", "des:", "bt:", "num::","::num","abc::","::abc"];
+    const sufijos = ['"','”','.',':','?','…','!','~',']','***']
 
     lineas.forEach(function(linea) {
       if(linea.startsWith('"')||linea.startsWith('“')){
@@ -76,6 +75,15 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (linea.startsWith('img:')){
         return '<img class="img" src="' + linea.substring(4) + '">';  
       }
+      else if (linea.startsWith('num::')){
+        return '<ol>';  
+      }
+      else if (linea.startsWith('abc::')){
+        return '<ol type="a">';  
+      }
+      else if (linea.startsWith('::num') || linea.startsWith('::abc') ){
+        return '</ol>';  
+      }
       else if (linea.startsWith('li:')){
         return '<li>' + linea.substring(3) + '</li>';  
       }
@@ -109,13 +117,19 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (linea.startsWith('linea:')){
         return '<hr />';  
       }
-      else if (linea.startsWith('***') || linea.endsWith('***')){
+      else if (linea.startsWith('***') && linea.endsWith('***')){
         if (linea == '***'){
-          return '<p><center>'+ linea +'</center><p>'
+          return '<p><center>'+ linea +'</center></p>'
         }
         else {
-          return '<p><i><center>'+ linea.substring(3, linea.length - 3) +'</center></i><p>'
+          return '<p><i><center>'+ linea.substring(3, linea.length - 3) +'</center></i></p>'
         }
+      }
+      else if (linea.startsWith('***')){
+        return '<p class="izq"><i>'+ linea.substring(3) +'</i></p>'
+      }
+      else if (linea.endsWith('***')){
+        return '<p class="der"><i>'+ linea.substring(0, linea.length - 3) +'</i></p>'
       }
       else {
         // Agregar etiquetas <p> al resto de las líneas
@@ -150,12 +164,19 @@ function cambiarEstilo() {
       // Si no existe, crear una nueva etiqueta <style> y agregar estilos
       var style = document.createElement('style');
       style.id = 'customStyle';
-          style.innerHTML = 'body{ background: #2b2922;} * {color:white;} .menu a{background:white;} img{border: 2px solid white;} .ext{border: 2px solid white;} .youtube{border: 2px solid white;} hr{border: 0.1cm solid white; background: white;} .dest{border-bottom: 2px solid white;} .bott > a{ color:white; border-bottom: 2px solid white;} .bott > a:hover{ background: rgba(255,255,255,0.8);color:black;}';
-
+          style.innerHTML = 'body{ background: #2b2922;}'+
+                            '* {color:white;} .menu a{background:white;}'+
+                            'img{border: 2px solid white;}'+
+                            '.ext{border: 2px solid white;}'+
+                            '.youtube{border: 2px solid white;}'+
+                            'hr{border: 0.1cm solid white; background: white;}'+
+                            '.dest{border-bottom: 2px solid white;}'+
+                            '.bott > a{ color:white; border-bottom: 2px solid white;}'+
+                            '.bott > a:hover{ background: rgba(255,255,255,0.8);color:black;}';
       // Agregar la etiqueta <style> al <head>
       document.head.appendChild(style);
     }
-  }
+}
 
 function BorrarMenu() {
     // Obtener todos los elementos con la clase 'cerrar'
