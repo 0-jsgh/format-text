@@ -28,6 +28,10 @@ li {
   margin-bottom: 0.2cm;
 }
 
+ol{
+    margin-left: 0.5cm;
+}
+
 a {
   display:block;
   color: #ff6700;
@@ -81,6 +85,14 @@ hr {
 
 p {
   margin-bottom: 0.2cm;
+}
+
+.der {
+    text-align: right;
+}
+
+.izq {
+    text-align: left;
 }
 
 .dest{
@@ -140,6 +152,7 @@ p {
 }
 
 .menu li > ol{
+    margin: 0;
     display: none;
 }
 
